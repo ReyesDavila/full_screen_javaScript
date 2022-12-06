@@ -1,0 +1,36 @@
+/////FUNCIÓN PANTALLA COMPLETA VERSIÓN 2:
+//Solo deben copiar y pegar el siguiente código en su index.html, al final de la página, por encima de la etiqueta </body>
+<!----_Boton full screen--------->
+        <div id="full_screen_button"></div>
+        <style>
+        #full_screen_button{background: transparent; width: 5vw;height: 5vw;position: absolute;text-align: center;top: 5px;right: 5px;border: 2px solid white;border-radius: 5px;}
+        </style>
+        <script>
+        color = "blue";
+        full_screen_button = document.getElementById("full_screen_button");
+        full_screen_button.style.border="2px solid "+color;
+        function ajustar_full_screen(){var medida = 2*window.innerWidth/100;if(medida<32){medida=32};if(window.innerWidth<window.innerHeight){medida = 2*window.innerHeight/100; if(medida<64){medida=64}} ;full_screen_button.style.width = medida+"px";full_screen_button.style.height = medida+"px";full_screen_button.style.fontSize = medida/1.5+"px";}
+        ajustar_full_screen();
+        window.addEventListener("resize", function(){ajustar_full_screen()})
+        var touchDevice = ('ontouchstart' in document.documentElement);
+        if(touchDevice){full_screen_button.addEventListener("touchstart", function(){toggleFullScreen()},false);}else{
+        full_screen_button.addEventListener("mousedown", function(){toggleFullScreen()},false);}
+        function toggleFullScreen() {
+                if ((document.fullScreenElement && document.fullScreenElement !== null) ||   
+                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {
+                document.documentElement.requestFullScreen();
+                    } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+                } else {
+                if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }}}
+        </script>
