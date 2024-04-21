@@ -1,0 +1,9 @@
+        <!--Inicio Button full screen-->
+        <button id="button_fullScreen"></button>
+        <style>#button_fullScreen{position: fixed;background-color: transparent;border: 1px solid white;border-radius: 5px;padding: 0px;margin: 0px;width: 2.5vw;height: 2.5vw;top: 5px;right: 5px;cursor: pointer;}
+        @media (max-aspect-ratio: 1/1) {#button_fullScreen{width: 5vh;height: 5vh;}}
+        </style>
+        <script>var button_fullScreen = document.getElementById("button_fullScreen");button_fullScreen.addEventListener("click", toggleFullscreen, true);    
+        function toggleFullscreen() {if (document.fullscreenElement) {document.exitFullscreen();} else {document.documentElement.requestFullscreen();}}
+        </script>
+        <!--Fin button full screen-->
